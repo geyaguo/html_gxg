@@ -1,0 +1,21 @@
+git教程网址http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000
+
+1.创建一个版本库非常简单，首先，选择一个合适的地方，创建一个空目录：(也可省略该步,在  现有文件中执行第二步)
+  $ mkdir gxg
+  $ cd learngit
+  $ pwd
+2.通过git init命令把这个目录变成Git可以管理的仓库(所有要监控的文件都在这个目录或其子  目录下)
+3.用命令git add告诉Git，把文件添加到仓库：
+  如 $ git add readme.text(文件的话,先进入到文件路径下,在添加,git add . 表示将文件下  所有文件都添加到暂缓区)
+4.用命令git commit告诉Git，把文件提交到仓库
+  如 $ git commit -m "这里是提交的注释"
+5.创建SSH Key (在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有    id_rsa和id_rsa.pub这两个文件，如果已经有了，可直接跳到下一步。如果没有,就创建)
+  如 $ ssh-keygen -t rsa -C "573369587@qq.com"
+  然后在将id_rsa.pub的内容粘贴到github的ssh key中
+6.添加远程仓库
+  如 $ git remote add origin git@github.com:geyaguo/gxg.git (geyaguo是自己的github名   称,gxg是新建仓库的名称)
+7.第一次提交前要更新最新代码(第一次提交前需要做)
+  如 $ git pull --rebase origin master
+8.提交代码到github
+  如 $ git push -u origin master
+  (这是第一次提交写法以后在提交就直接 $ git push origin master)
