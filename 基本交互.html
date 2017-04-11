@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>交互</title>
+		<script src="jquery.min.js"></script>
+	</head>
+	<body>
+		<script>
+			$(document).ready(function(){
+//				var a;
+//				alert(parseInt(a))
+				//注册
+				$(".zhuce_btn").click(function(){
+					$.post('../Btoc/register',{
+						mobile:$("input[name=mobile]").val(),
+						password:$("input[name=password]").val(),
+						bid:0,
+						message:$("input[name=message]").val()
+					},function(ret){
+						var data=$.parseJSON(ret);
+						if(data.status){
+							 alert(data.msg);
+						}else{
+							alert("注册成功");
+							$(".zhuce").css("display","none");
+							$(".denglu").css("display","block");
+						};
+					});
+				});
+				//获取验证码
+				$(".getpassbtn").click(function(){
+					$.getJSON("../Btoc/getMessage",{mobile : $("input[name=mobile]").val()},function(json){
+						if(json.status){
+							alert(json.msg);
+						}else{
+							alert('获取成功,请查收短信!');
+							$("#noclick").attr("disabled","disabled");
+							setTimeout(function(){
+								$("#noclick").removeAttr("disabled");
+							},60000)
+						}
+					});
+				});
+				//登录
+				$(".denglu_btn").click(function(){
+					$.post('../Btoc/login',{
+						mobile:$("input[name=user]").val(),
+						password:$("input[name=upass]").val(),
+					},function(ret){
+						var data=$.parseJSON(ret);
+						if(data.status){
+							alert(data.msg);
+						}else{
+							$("#singnBtn").css("display","none");
+							$("#WinBtn").css("display","block")
+							alert("登录成功");
+							$(".mask").css("display","none");
+							$(".denglu").css("display","none");
+							//抽奖次数
+						    $.ajax({
+						        type: "post",
+						        url: "getCount",
+						        dataType: "json",
+						        success: function(data){
+						       	   console.log(data.count);
+						       	   $(".num").html(data.count);
+						       	   
+						        }
+						 	});
+						 	
+						 	
+						 	//通过ajax获取数据
+//						 	$.ajax({
+//						        type: "post",
+//						        url: "getCount",
+//						        data:{tel:"123",password:"123"},
+//						        dataType: "json",
+//						        success: function(data){
+//						       	   console.log(data.count);
+//						       	   $(".num").html(data.count);
+//						       	   
+//						        }
+//						 	});
+						 	//摇一摇————————————————
+							var myShakeEvent = new Shake({
+						        threshold: 15
+						    });
+						    myShakeEvent.start();
+						    window.addEventListener('shake', shakeEventDidOccur, false);
+						    function shakeEventDidOccur () {
+						    	$(".mask").css("display","block");
+						    	$("#img1").css("display","block");
+						    	var audio=document.getElementById("audio");
+						    	audio.play();
+								setTimeout(function(){
+						            audio.pause();
+						            shakePrize();
+						        }, 1000);
+						    };
+						    //摇一摇————————————————完
+						};
+					});
+				});
+	 		});
+		</script>
+	</body>
+</html>

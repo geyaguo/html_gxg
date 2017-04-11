@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>前端常用功能</title>
+		<!--在360类似的双核浏览器中优先使用极速模式(极速模式一般是谷歌内核,兼容模式一般是ie内核)-->
+		<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+		<meta name="renderer" content="webkit" />
+		
+		<script src="jquery.min.js"></script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body{
+				/*常用字体设置*/
+				font-family: 'Hiragino Sans GB','Microsoft YaHei',"微软雅黑",STHeiti,'WenQuanYi Micro Hei',SimSun,sans-serif;
+			}
+			
+			div {
+				/*透明度兼容*/
+				filter: alpha(opacity=50);
+				-moz-opacity: 0.5;
+				opacity: 0.5;
+			}
+			
+			/*清除浮动方法一*/
+			div{
+				clear: both;
+				overflow: hidden;
+			}
+			/*清除浮动方法二(比较好的方法)*/
+			/*元素添加class名clearfix就可以清除浮动了*/
+			.clearfix:before,
+			.clearfix:after {
+				content: "";
+				display: table; 
+			}
+			.clearfix:after {
+				clear: both;
+				overflow: hidden;
+			}
+			.clearfix {
+				zoom: 1;
+				/* for ie6 & ie7 */ 
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--h4中文字垂直居中    一行还是二行都是垂直居中的-->
+		<div style="display:table-cell;vertical-align:middle;height:30px;">
+			<h4>水电费水电费收费</h4>
+		</div>
+		
+		<!--iframe-->
+		<!--<iframe src="" width="" height=""></iframe>
+		<iframe src="http://116.62.42.225:8080/view/registerProtocol?userToken=&platformType=WX&_=1483600640515" style="width: 100%; height:100%;border: none;;"></iframe>-->
+
+		<script>
+		
+		//禁止滚动
+		//window.addEventListener( ‘scroll’, noscroll );
+		
+		//把一个对象格式化为url路径中能用的参数格式(gxg 不添加其他信息 token)
+		/*function geshihua(obj) {
+			var arr = [];
+			for(var key in obj) {
+				if(obj[key] instanceof Array) {
+					for(var i = 0; i < obj[key].length; i++) {
+						arr.push(key + "=" + obj[key][i]);
+					}
+				} else {
+					arr.push(key + "=" + obj[key]);
+				}
+			}
+			return arr.join("&");
+		};
+		var p = {
+			"provinceId":1,
+			"cityId":2,
+			"areaId":3
+		};
+		location.href="www.baidu.com?"+geshihua(p); //跳转到www.baidu.com?provinceId=1&cityId=2&areaId=3*/
+		
+			//保留二位小数点   没有小树点自动添加二个零
+//			var n = 123456.789; 
+//			var m = 123456;
+//				alert(n.toFixed(2)+"/"+m.toFixed(2))
+//		
+			//判断ios版本
+//			var ver = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);  
+//		    ver = parseInt(ver[1], 10);  
+//		    if(ver<9){  
+//		        alert("版本小于9");  
+//		        return false;  
+//		    }else{
+//		    	alert("版本大于等于9")
+//		    	window.location.href = "https://www.myhuipin.com/applinks/jobRecommend?jobId=138&userToken=71819717b90f4fa2a290e6164704766d";
+//		    }
+		
+			//序列化
+			//		var aa = { width:1900, height:1200 };
+			//		var str = jQuery.param(aa);
+			//		var astr=decodeURIComponent($.param(aa));
+			//		alert(str)
+			//		alert(astr)
+
+			//获取页面路径后的参数
+			//		var url = location.search;
+			//		alert(url);
+
+			//获取页面的整个路径（url）
+			//alert(window.location.href)
+			//  	var url=window.location.href.split("?");
+			//  	alert(url[0])
+
+			//获取字符串后面的数字
+			//		var s="?sdf123"
+			//		getNum(s)
+			//		function getNum(text){
+			//			var value = text.replace(/[^0-9]/ig,""); 
+			//			alert(value);
+			//		};
+
+			//字符串拼接换行
+			//		$("body").append("<a class='aa'>这是啊啊啊啊啊啊啊</a><a class='bb'>这是不不不不不不不</a>"
+			//		+"<a class='cc'>这是擦擦擦擦擦擦</a><a class='dd'>这是顶顶顶顶</a><a class='ee'>这是呃呃呃额额</a>");
+			//		$(".dd").click(function(){
+			//			alert()
+			//		});
+
+			//弹出带有确定按钮的弹窗
+			//		function IsSure(){
+			//			var mes=confirm("您确定要删除吗？");//自定义标题；确定返回true,取消返回false;
+			//			if(mes==true){
+			//				alert(1)
+			//			}else{
+			//				alert(2)
+			//			};
+			//		};
+
+			//!!!!!!!
+			//json对象和字符串相互转换
+			//		最常用的方法
+			//		JSON.parse(jsonstr); //可以将json字符串转换成json对象 
+			//		JSON.stringify(jsonobj); //可以将json对象转换成json对符串
+			//		1：jQuery插件支持的转换方式 代码如下: 
+			//		$.parseJSON( jsonstr ); //jQuery.parseJSON(jsonstr),可以将json字符串转换成json对象
+			//		反过来，使用 serialize 系列方法：如：var fields = $("select, :radio").serializeArray();
+			//		2：!!!浏览器支持的转换方式(Firefox，chrome，opera，safari，ie9，ie8)等浏览器 
+			//		代码如下: 
+			//		JSON.parse(jsonstr); //可以将json字符串转换成json对象 
+			//		JSON.stringify(jsonobj); //可以将json对象转换成json对符串
+			//		注：ie8(兼容模式),ie7和ie6没有JSON对象，需要引入 json.js 或 json2.js。
+			//		3：Javascript支持的转换方式 
+			//		eval('(' + jsonstr + ')'); //可以将json字符串转换成json对象,注意需要在json字符外包裹一对小括号 
+			//		注：ie8(兼容模式),ie7和ie6也可以使用eval()将字符串转为JSON对象，但不推荐这些方式，这种方式不安全eval会执行json串中的表达式。
+			//		4：JSON官方的转换方式 
+			//		http://www.json.org/，提供了一个json.js,这样ie8(兼容模式),ie7和ie6就可以支持JSON对象以及其stringify()和parse()方法；
+
+			//判断是否是在微信里打开还是在其他浏览器打开的
+			//		function is_weixn(){  
+			//		    var ua = navigator.userAgent.toLowerCase();  
+			//		    if(ua.match(/MicroMessenger/i)=="micromessenger") {  
+			//		        return true;  
+			//		    }else{  
+			//		        return false;  
+			//		    };
+			//		};
+
+			//输入框中按下回车键触发事件
+			//		$('.searchipt').keydown(function(e){
+			//			if(e.keyCode==13){
+			//				$('.search_btn').trigger("click");
+			//			};
+			//		});
+
+			//验证字符串中是否包含另一个字符串
+			//		var Cts = "bblText";
+			//		if(Cts.indexOf("Text") > 0 ){
+			//		    alert('Cts中包含Text字符串');
+			//		}
+
+			//判断字符串是否包含空格
+			//		var str = "任意 字符串";
+			//		if (str.indexOf(" ") == -1) {
+			//		    alert("没有空格");
+			//		} else {
+			//		    alert("有空格");
+			//		}
+
+			//选择显示的元素的上一个元素的内容
+			//		$(".chose:visible").prev().html()
+
+			//判断元素的显示隐藏
+			//		if($("#mydiv").is(":visible")==false){
+			//			alert("隐藏的"); 
+			//		}else{ 
+			//			alert("可见的"); 
+			//		}
+
+			//本地存储  sessionStorage和localStorage用法相同
+			//		sessionStorage.clear();
+			//		var person="本地存储"
+			//		sessionStorage.setItem("key", JSON.stringify(person));
+			//		var url=sessionStorage.getItem("key");
+
+			//判断是在移动端还是pc端
+			//		function page() {
+			//			if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+			//				//移动端
+			//				alert("移动端");
+			//			}else {
+			//				//PC端
+			//				alert("pc端");
+			//			}
+			//		};
+			//		page();
+			//浏览器窗口大小变化时触发的函数
+			//		window.onresize = function(){
+			//		};
+
+			//class名为search_text的input内容变换是触发
+			//		$(".search_text").on("input propertychange", function() {
+			//			
+			//		});
+
+			//删除数组中一项
+			//		var index = vm.vueData.imgArr.indexOf(me.siblings("img").attr("src"));
+			//		if (index > -1) {
+			//			vm.vueData.imgArr.splice(index, 1);
+			//			vm.vueData.testImg.splice(index, 1);
+			//		};
+			//验证手机号
+			//			if(!(/^1[34578]\d{9}$/.test($("#phone").val()))) {
+			//				Utils.alertBtn({
+			//					rootClass: "querenBtn",
+			//					text: "请填写正确手机号",
+			//					title: " ",
+			//					btnText: "我知道了",
+			//					fn: function(e) {}
+			//				});
+			//				return false;
+			//			};
+			
+			//截取字符串某一部分  substring()  slice()  没有第二个参数一直截取到尾部
+//			var a = "sdf";
+//			var v = a.substring(0,2);
+//			alert(v); //sd
+//			alert(a) //sdf
+		
+//			var a = "sdf";
+//			var v = a.slice(0,2);
+//			alert(v); //sd
+//			alert(a) //sdf
+
+
+			//vue和mui框架
+			//v-for渲染已经完成之后初始化索引列表
+//			vm.$nextTick(function(){
+//				 mui.ready(function() {
+//					var header = document.querySelector('header.mui-bar');
+//					var list = document.getElementById('list');
+//					//calc hieght
+//					list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
+//					//create
+//					window.indexedList = new mui.IndexedList(list);
+//				});
+//			});
+
+			//jquery 使滚动条始终在底部  div的id未gxg
+//			$("#gxg").scrollTop($("#gxg")[0].scrollHeight);
+			//js 使滚动条始终在底部  div的id未gxg
+//			var oDiv = document.getElementById("#gxg");
+//			oDiv.scrollTop = oDiv.scrollHeight;
+			
+		</script>
+	</body>
+
+</html>

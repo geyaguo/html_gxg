@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.div{
+				width:200px;
+				height:200px;
+				background:#000
+			}
+		</style>
+	</head>
+	
+	<body>
+		<!--class名mui-active要加单引号(官网上没加)-->
+		<div class="div" v-bind:class="{'mui-active':panduan}"></div>
+	</body>
+	
+	
+	<script src="js/vue.min.js"></script>
+	<script>
+		var vm = new Vue({
+			el: 'body',
+			data:{
+				panduan:true
+			}
+		})
+	</script>
+</html>

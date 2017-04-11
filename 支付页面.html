@@ -1,0 +1,171 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <title>微信安全支付</title>
+
+    <script type="text/javascript">
+
+        var flag = false;
+        function disablePay(v){
+            if(v === null)
+                $('btn-pay').removeAttribute('disabled');
+            else
+                $('btn-pay').setAttribute('disabled','disabled');
+        }
+
+        function $(id){
+            return document.getElementById(id);
+        }
+
+        //调用微信JS api 支付
+        function jsApiCall()
+        {
+            WeixinJSBridge.invoke(
+                    'getBrandWCPayRequest',
+                    {"appId":"wx50697da20581e8a9","nonceStr":"jngbs9i6m7q07s3equlmgsovwqe08bi0","package":"prepay_id=wx2016091909541768e124cf3b0892255159","signType":"MD5","timeStamp":"1474250057","paySign":"B08B61B2E22052E132222CEB2FFB8DAD"},
+            function(res){
+                WeixinJSBridge.log(res.err_msg);
+                //alert(res.err_code);
+                //alert(res.err_code+res.err_desc+res.err_msg);
+
+                if(res.err_msg.indexOf('ok')>=0)
+                {
+                    //alert('');
+                    //location.href='';
+                    location.href='http://home.ifunup.com/page/Mall/goods/pay_ok.html';
+                }else if(~res.err_msg.indexOf('cancel')){
+                    disablePay(null);
+                }else{
+                    if('http://home.ifunup.com/page/Mall/goods/pay_error.html'!='')
+                    {
+                        location.href='http://home.ifunup.com/page/Mall/goods/pay_error.html';
+                    }else{
+                        alert(res.err_code+res.err_desc+res.err_msg);
+                    }
+                }
+            }
+        );
+        }
+
+        function callpay()
+        {
+            disablePay();
+            if (typeof WeixinJSBridge == "undefined"){
+                if( document.addEventListener ){
+                    document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+                }else if (document.attachEvent){
+                    document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                    document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+                }
+            }else{
+                jsApiCall();
+            }
+        }
+    </script>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    
+    <style type="text/css">
+    	@charset "utf-8";
+/* CSS Document */
+
+html { background:#f3f3f3; height:100%; -webkit-tap-highlight-color:transparent;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+	margin:0;padding:0; color: #333; font-size: 100%; word-wrap: break-word; font-family: Microsoft Yahei; -webkit-tap-highlight-color:transparent;}
+table{ border-collapse:collapse; border-spacing:0;}
+fieldset,img{ border:0;}
+input,textarea,select{ font-family:inherit;font-weight:inherit;}
+a { text-decoration:none; color:#333}
+ul,li { list-style:none;}
+img { border: medium none; vertical-align: bottom; }
+
+.clearfix:after {
+    clear: both;
+    content: " ";
+    display: block;
+    height: 0;
+    visibility: hidden;}
+.clearfix { *zoom:1; }
+
+.wrap {
+    margin:0 auto;
+    max-width:640px;
+    margin-left:auto;
+    margin-right:auto;
+	position:relative;}
+.nav {
+	background:none repeat scroll 0 0 rgba(88, 153, 232, 0.95);
+    height:44px;
+    line-height:44px;
+    max-width:640px;
+    position:fixed;
+    text-align:center;
+    top:0;
+    width:100%;
+    z-index:1000;}
+.navBack {
+	background:url(../images/back.png) no-repeat center center;
+	width:24px;
+	height:24px;
+    display:block;
+    left:10px;
+    margin-top:-12px;
+    position:absolute;
+    top:50%;}
+	
+.navFont { color:#fff; font-size:18px;}
+
+
+.paid { background:#FFF; margin-top:44px; width:100%; height:100px; border-bottom:1px solid #ccc; font-size:16px;}
+.paidInfo { text-align:center;  color:#777; font-size:16px;}
+.paidInfo span { color:#ff8400; font-size:36px; text-align:center; line-height:100px;}
+
+.wxBody { margin-top:16px; border-top:1px solid #ccc; border-bottom:1px solid #ccc; padding:0 10px;  background:#FFF;}
+.bt { border-bottom:1px solid #ccc;}
+.information,.beneficiary { height:60px; line-height:60px;}
+.wxbg { background:url(../images/info3.png) no-repeat left center;}
+.wxbg1 { background:url(../images/info4.png) no-repeat left center;}
+.item1 { float:left; color:#ccc;  height:60px; line-height:60px; padding-left:20px;}
+.item2 { float:right; color:#666;}
+
+.bottom1 { height:60px;}
+.bottom1 a { background: none repeat scroll 0 0 #ff8400; color: #fff; display: block;
+    font-size:18px;
+    height:44px;
+    line-height:44px;
+    margin:16px 10px;
+    text-align:center;}
+    
+        #btn-pay[disabled]{
+            opacity: .65;
+        }
+    </style>
+</head>
+<body onload="callpay()">
+
+<div class="wrap">
+    <div class="nav">
+        <!--<a class="navBack" ></a>-->
+        <a class="navFont" >微信支付</a>
+    </div>
+    <div class="paid">
+        <div class="paidInfo">
+            <span>¥</span>
+            <span>0</span>元
+        </div>
+    </div>
+    <div class="wxBody">
+        <div class="information bt clearfix">
+            <div class="item1 wxbg">商品信息</div>
+            <div class="item2"></div>
+        </div>
+        <div class="beneficiary clearfix">
+            <div class="item1 wxbg1">收款方</div>
+            <div class="item2"></div>
+        </div>
+    </div>
+    <div class="bottom1">
+        <a id="btn-pay" href="javascript:callpay();" >确定付款</a>
+    </div>
+</div>
+</body>
+</html>

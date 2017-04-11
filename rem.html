@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>webApp中的rem单位</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no" />
+		<style>
+		/*下面是我直接在工具复制过来的现成rem换算适配代码↓（设计稿宽度：640，字体值：20）*/
+		/*1rem在640的设计稿中代表10px;在不同宽度的屏幕下等比缩放。只要在640的屏幕宽度下调试好就可以了*/
+		
+		/*但是容器的高最低为12px,低于12px的高时,浏览器会默认高度为12px,此时1rem表示的高低于12px时,浏览器计算容器高度时会默认1rem代表12px;
+		解决方法
+		方法1.所以最好将1rem设置成屏幕宽度的1/10;
+		方法2.设置html元素字体大小 = document根节点(html)宽度 * 100 / 设计图宽度  ;
+			 既讲html字体大小设置成:屏幕的宽度乘以100除以设计图的宽度;
+			 既1rem等于100px;用以计算;*/
+		@media only screen and (max-width: 1080px), only screen and (max-device-width:1080px) {
+			html,body {
+				font-size:16.875px;
+			}
+		}
+		@media only screen and (max-width: 960px), only screen and (max-device-width:960px) {
+			html,body {
+				font-size:15px;
+			}
+		}
+		@media only screen and (max-width: 800px), only screen and (max-device-width:800px) {
+			html,body {
+				font-size:12.5px;
+			}
+		}
+		@media only screen and (max-width: 720px), only screen and (max-device-width:720px) {
+			html,body {
+				font-size:11.25px;
+			}
+		}
+		@media only screen and (max-width: 640px), only screen and (max-device-width:640px) {
+			html,body {
+				font-size:10px;
+			}
+		}
+		@media only screen and (max-width: 600px), only screen and (max-device-width:600px) {
+			html,body {
+				font-size:9.375px;
+			}
+		}
+		@media only screen and (max-width: 540px), only screen and (max-device-width:540px) {
+			html,body {
+				font-size:8.4375px;
+			}
+		}
+		@media only screen and (max-width: 480px), only screen and (max-device-width:480px) {
+			html,body {
+				font-size:7.5px;
+			}
+		}
+		@media only screen and (max-width: 414px), only screen and (max-device-width:414px) {
+			html,body {
+				font-size:6.46875px;
+			}
+		}
+		@media only screen and (max-width: 400px), only screen and (max-device-width:400px) {
+			html,body {
+				font-size:6.25px;
+			}
+		}
+		@media only screen and (max-width: 375px), only screen and (max-device-width:375px) {
+			html,body {
+				font-size:5.859375px;
+			}
+		}
+		@media only screen and (max-width: 360px), only screen and (max-device-width:360px) {
+			html,body {
+				font-size:5.625px;
+			}
+		}
+		@media only screen and (max-width: 320px), only screen and (max-device-width:320px) {
+			html,body {
+				font-size:5px;
+			}
+		}
+		@media only screen and (max-width: 240px), only screen and (max-device-width:240px) {
+			html,body {
+				font-size:3.75px;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		
+	</body>
+</html>

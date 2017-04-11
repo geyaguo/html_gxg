@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+
+		<audio id="audio" src="audio.mp3"></audio>
+
+		<button class="btn">播放</button>
+		
+		<h3>音频总时长<span></span></h3>
+		
+		<h4>当前播放时间<span></span></h4>
+
+		<script src="js/jquery-1.8.0.js"></script>
+		<script>
+			$(function() {
+				
+				//音频详解网址http://www.open-open.com/lib/view/open1407401112973.html
+				
+				
+				var myVid = document.getElementById("audio");
+				
+				//音频一经完整的加载完毕执行
+				myVid.addEventListener("loadeddata",function() {
+		        	//控制播放和暂停
+		        	$(".btn").click(function() {
+						if(myVid.paused) {
+							myVid.play();
+							myVid.volume = 1;
+							$(".btn").html("暂停");
+						} else {
+							myVid.pause();
+							$(".btn").html("播放");
+						}
+					});
+		            //总时间
+		          	$("h3 span").html(timeChange(myVid.duration));
+		          	//当前播放时间
+		            setInterval(function() {
+		                var currentTime = myVid.currentTime;
+		                $("h4 span").html(timeChange(currentTime));
+		            }, 1000);
+		        }, false);
+			        
+			    
+			    //播放时间转换成分秒
+			    function timeChange(time) {//默认获取的时间是时间戳改成我们常见的时间格式
+				    //分钟
+				    var minute = time / 60;
+				    var minutes = parseInt(minute);
+				    if (minutes < 10) {
+				        minutes = "0" + minutes;
+				    }
+				    //秒
+				    var second = time % 60;
+				    seconds = parseInt(second);
+				    if (seconds < 10) {
+				        seconds = "0" + seconds;
+				    }
+				    var allTime = "" + minutes + "" + ":" + "" + seconds + "";
+				    return allTime
+				}
+
+			})
+		</script>
+
+	</body>
+
+</html>

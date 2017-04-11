@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title id="sd">练习</title>
+		<link id="css_id" rel="stylesheet" href="css/pc.css" />
+		<script src="jquery.min.js"></script>
+		<script>
+		
+			//参考页面http://www.jb51.net/article/76585.htm   和       http://blog.csdn.net/xyxjn/article/details/41805365/
+			
+			
+			//iOS不行就用a链接,href写成weixin://   尽量都用a标签
+			//微信和QQ中都可以通过应用宝的微下载页面来打开本地app,应用宝微下载页面会自动判断是ios还是安卓
+			//有兼容性问题(最后面的是最终解决方案)
+//			if(/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+//				//alert(navigator.userAgent); 
+//				alert('这是IOS');
+//				var ifr = document.createElement("iframe");
+//				ifr.src = "weixin://"; /***打开app的协议，有ios同事提供   也就是URL Scheme***/
+//				ifr.style.display = "none";
+//				document.body.appendChild(ifr);
+//				window.setTimeout(function() {
+//					document.body.removeChild(ifr);
+//					window.location.href = "http://www.myhuipin.com/downLoad"; /***下载app的地址***/
+//				}, 2000);
+//			} else if(/(Android)/i.test(navigator.userAgent)) {
+//				//alert(navigator.userAgent); 
+//				alert('这是Android');
+//				window.location.href = "weixin://"; /***打开app的协议，有安卓同事提供   也就是URL Scheme(安卓需要配置)***/
+//				window.setTimeout(function() {
+//					window.location.href = "http://www.myhuipin.com/downLoad"; /***下载app的地址***/
+//				}, 2000);
+//			} else {
+//				alert('这是PC');
+//			};
+			
+			
+			//最终解决方案(a标签在ios和安卓中兼容性都是最好的,只是在微信里面打不开,微信里面可以通过应用宝打开)(安卓中用window.location.href打开app也是可以的,在微信中也只能用应用宝打开)
+			//ios通过https打开app(系统版本在9以上才能用https打开) 微信不会拦截  
+			//最重要的在这个路径上面配置跳转到失败的页面(https://www.myhuipin.com/applinks/jobRecommend)(最后测试好像在iphone6 plus上面的应用宝微下载页面有问题,最后跳转到了自己域名下的下载页面)
+			//判断是Android还是ios
+			if(Utils.isApple()) {
+				//ios
+				//判断ios版本
+				var ver = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);  
+			    ver = parseInt(ver[1], 10);  
+			    if(ver<9){  
+			        console.log("版本小于9");
+			        window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.myhuipin.huipin";
+			    }else{
+			    	console.log("版本大于等于9");
+			    	window.location.href = "https://www.myhuipin.com/applinks/jobRecommend?jobId="+urlParamsId+"&userToken="+urlParams.token;
+			    	//window.location.href = "https://www.myhuipin.com/applinks/jobRecommend?jobId=138&userToken=71819717b90f4fa2a290e6164704766d";
+			    	window.setTimeout(function() {
+//						window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.myhuipin.huipin";//跳转到应用宝的微下载页面
+						window.location.href = "http://www.myhuipin.com/downLoad";//跳转到自己域名下的下载页面
+					}, 2000);
+			    } 
+			}else{
+				//Android
+				//wx
+				if(Utils.isWxBrowser()){
+					window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.myhuipin.huipin";
+				}else{
+					window.location.href = "com.myhuipin.huipin://jobRecommend?jobId="+urlParamsId+"&userToken="+urlParams.token; /***打开app的协议，有安卓同事提供***/
+					window.setTimeout(function() {
+						window.location.href = "http://www.myhuipin.com/downLoad";
+					}, 2000);
+				}
+			}
+			
+			//判断QQ内置浏览器
+//			if(navigator.userAgent.indexOf(" QQ")>-1){
+//				alert("QQ内置浏览器")
+//			}else{
+//				alert("非QQ内置浏览器")
+//			}
+//			
+			
+		</script>
+	</head>
+
+	<body>
+
+	</body>
+
+</html>

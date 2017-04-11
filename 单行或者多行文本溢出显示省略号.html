@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			/*单行文本溢出显示省略号*/
+			.danhang{
+				width:50px;
+				overflow: hidden;
+				text-overflow:ellipsis;
+				white-space: nowrap;
+			}
+			/*多行文本溢出显示省略号*/
+			.duohang{
+				display: -webkit-box!important;
+		        -webkit-box-orient: vertical;
+		        -webkit-line-clamp: 3;
+		        overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="danhang">单行显示省略号</div>
+		<div class="duohang">多行显示省略号</div>
+		
+		<script src="jquery.min.js"></script>
+		<script>
+			//单行文本溢出显示省略号用offsetWeight和scrollWeight
+			$(".dongtai_height_xianzhi_gxg").map(function() {
+			    if (this.offsetHeight < this.scrollHeight) {
+			        //写显示全文的按钮的代码
+			        console.log("显示了省略号")
+			    }else{
+			    	console.log("没有显示省略号")
+			    };
+			});
+		</script>
+		
+	</body>
+</html>

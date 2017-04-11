@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title id="sd">练习</title>
+		<link id="css_id" rel="stylesheet" href="css/pc.css" />
+		<script src="jquery.min.js"></script>
+		<script>
+			function page() {
+				if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+					//移动端
+					alert("移动端");
+					$("head").prepend("<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no' />");
+					$("#css_id").attr("href","css/phone.css");
+				}else {
+					//PC端
+					alert("pc端");
+					$("#css_id").attr("href","css/pc.css");
+				};
+				
+//				判断是否是QQ内置浏览器 可以弹出navigator.userAgent 对比QQ内置浏览器和QQ浏览器
+				if(navigator.userAgent.indexOf(" QQ")>-1){
+					alert("qq内置浏览器")
+				}else{
+					fns.open_app();
+				}
+				
+				
+			};
+			page();
+		</script>
+	</head>
+	<body>
+		<div class="title">汉字</div>
+		<div class="two_title">第一个二级标题</div>
+		<div class="one_content">
+			<p>
+				        自来水豆腐三路口附近的算了开发类似的纠纷乐山大佛离开房间是老大房楼上的杰弗里斯
+				谁看了就放开手的减肥了开始放市领导及分类考试的风景两款手机垫付了款式大方
+				收到了房间来刷卡机打发了第三方了结束待付款
+			</p>
+		</div>
+		<div class="two_title">第二个二级标题</div>
+		<div class="one_content">
+			<p>
+				自来水豆腐三路口附近的算了开发类似的纠纷乐山大佛离开房间是老大房楼上的杰弗里斯
+				谁看了就放开手的减肥了开始放市领导及分类考试的风景两款手机垫付了款式大方
+				收到了房间来刷卡机打发了第三方了结束待付款
+			</p>
+		</div>
+		<div class="two_title">第三个二级标题</div>
+		<div class="one_content">
+			<p>
+				自来水豆腐三路口附近的算了开发类似的纠纷乐山大佛离开房间是老大房楼上的杰弗里斯
+				谁看了就放开手的减肥了开始放市领导及分类考试的风景两款手机垫付了款式大方
+				收到了房间来刷卡机打发了第三方了结束待付款
+			</p>
+		</div>
+		<div class="two_title">第四个二级标题</div>
+		<div class="one_content">
+			<p>
+				自来水豆腐三路口附近的算了开发类似的纠纷乐山大佛离开房间是老大房楼上的杰弗里斯
+				谁看了就放开手的减肥了开始放市领导及分类考试的风景两款手机垫付了款式大方
+				收到了房间来刷卡机打发了第三方了结束待付款
+			</p>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+	</head>
+	<body>
+		<!--<button id="btn">按钮</button>-->
+		<p>sdfsdf</p>
+		<a href="ekoomeiye://jobRecommend?jobId=138&userToken=71819717b90f4fa2a290e6164704766d">链接按钮</a>
+		
+		<script>
+			document.getElementById("btn").onclick=function(){
+				if(/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+					var ifr = document.createElement("iframe");
+					ifr.src = "ekoomeiye://jobRecommend?jobId=138&userToken=71819717b90f4fa2a290e6164704766d"; /***打开app的协议，有ios同事提供***/
+					ifr.style.display = "none";
+					document.body.appendChild(ifr);
+					window.setTimeout(function() {
+						document.body.removeChild(ifr);
+						window.location.href = "http://www.myhuipin.com/downLoad"; /***下载app的地址***/
+					}, 2000);
+				} else if(/(Android)/i.test(navigator.userAgent)) {
+					window.location.href = "com.myhuipin.huipin://ekoo/jobRecommend?jobId="+urlParamsId+"&userToken="+urlParams.token; /***打开app的协议，有安卓同事提供***/
+					window.setTimeout(function() {
+						window.location.href = "http://www.myhuipin.com/downLoad";   /***下载app的地址***/
+					}, 2000);
+				}
+			}
+		</script>
+	</body>
+</html>

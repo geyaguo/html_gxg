@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script src="jquery.min.js"></script>
+		<script>
+			var a = {
+				aa:"111",
+				bb:"222"
+			};
+			var b = {
+				cc:"333",
+				dd:"444"
+			};
+			console.log($.extend(a,b));  //{aa:"111",bb:"222",cc:"333",dd:"444"}
+			//参考路径http://blog.163.com/yw_0721/blog/static/71645797201021232731933/
+			
+			var c = ["a","b"];
+			var d = ["c","d"];
+			console.log(c.concat(d))   //["a","b","c","d"]
+		</script>
+	</body>
+</html>

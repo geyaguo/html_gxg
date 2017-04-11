@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>正则验证</title>
+		<script src="jquery.min.js"></script>
+		<style>
+			.tishi{
+				height:20px;
+				line-height:20px;
+				color:#ff0000;
+			}
+		</style>
+	</head>
+	<body>
+		<p class="tishi"></p>
+		<input class="yanzhengma" type="text" placeholder="验证码" />
+		<input class="tel" type="text" placeholder="手机号" />
+		<input type="email" class="email" placeholder="请输入邮箱" />
+		<input class="upass" type="password" placeholder="请输入密码" />
+		<input class="id_number" type="text" placeholder="身份证号" />
+		<input class="btn" type="button" value="按钮" />
+		
+		<script>
+			$(function(){
+				if(!(/^1[34578]\d{9}$/.test(phone)){
+					alert("填写正确手机号")
+				}
+				$(".btn").click(function(){
+					//alert($(".upass").val())
+					//邮箱的正则表达式
+					var _reg= /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+					//密码的正则表达式    6到20位英文、数字、点号、下划线和#组成
+					var upass=/^([a-z0-9A-Z._#]){6,20}$/;
+					//验证码
+					if($(".yanzhengma").val().length<1||$(".yanzhengma").val().length>6||!/^[0-9]*$/.test($(".yanzhengma").val())){
+		                $(".tishi").html("请输入正确的验证码!");
+	                //手机号    var regex = /^1[3|4|5|8][0-9]\d{4,8}$/;
+			        }else if(!isMobile($(".tel").val())){
+			            $(".tishi").html("请输入正确的手机号！");
+					//邮箱    var _reg= /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;		        
+			        }else if(!_reg.test($(".email").val())){
+			            $(".tishi").html("请输入正确的邮箱！");
+			        //密码为6到20位英文、数字、点号、下划线和#组成   var upass=/^([a-z0-9A-Z._#]){6,20}$/
+			        }else if(!upass.test($(".upass").val())){
+        				$(".tishi").html("请输入正确的密码！");
+        			//身份证号
+					}else if(!checkCard($(".id_number").val())){
+						$(".tishi").html("请输入正确的身份证号码！");
+					}
+        			//都输入正确的情况下
+        			else{
+		        		$(".tishi").html("");
+		        	};
+				});
+				// 手机号码校验
+		        function isMobile(str) {
+		                if (str == '' || $.trim(str) == ''){
+		                	 return false;
+		                }; 
+		                var one = new RegExp('^13\\d{9}');
+		                var two = new RegExp('^15\\d{9}');
+		                var three = new RegExp('^17\\d{9}');
+		                var four = new RegExp('^18\\d{9}');
+		                if (one.test(str) || two.test(str) || three.test(str) || four.test(str)) {
+		                        return true;
+		                };
+		                return false;
+		        };
+		        //身份证号验证
+		        function checkCard(str){
+				    //15位数身份证正则表达式
+				    var arg1 = /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$/;
+				    //18位数身份证正则表达式
+				    var arg2 = /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])((\d{4})|\d{3}[A-Z])$/;
+				    if(str.match(arg1) == null && str.match(arg2) == null) {
+				        return false;
+				    }else{
+				        return true;
+				    };
+				};
+			})
+		</script>
+	</body>
+</html>

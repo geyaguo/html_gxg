@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>判断登陆平台</title>
+	</head>
+	<body>
+		
+		<script>
+			if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) { 
+	             //alert(navigator.userAgent); 
+	            alert('这是IOS');
+	        } else if (/(Android)/i.test(navigator.userAgent)) { 
+	            //alert(navigator.userAgent); 
+	            alert('这是Android');
+	        } else { 
+	            alert('这是PC');
+	        };
+		</script>
+	</body>
+</html>

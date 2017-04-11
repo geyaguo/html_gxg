@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+　　<head>
+　　<title>生成二维码</title>
+　　<meta charset="UTF-8">
+　　<script type='text/javascript' src='http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js'></script>
+   <script type="text/javascript" src="http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+　　<script type="text/javascript">
+	　　jQuery(function () {
+	　　		jQuery("#qrCodeDiv").qrcode("二维码内容，汉字会乱码");
+	　　});
+	
+　　</script>
+　　</head>
+
+　　<body>
+　　<div id="qrCodeDiv"></div>
+　　</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no' />
+		<meta charset="UTF-8">
+		<title>移动端微信页面禁止字体放大</title>
+	</head>
+	<body>
+		
+		<script>
+		//移动端微信页面禁止字体放大   安卓手机通过js  iphone手机通过css控制
+			//1.安卓手机微信禁止字体放大js代码
+			(function(){  
+			    if (typeof(WeixinJSBridge) == "undefined") {  
+			        document.addEventListener("WeixinJSBridgeReady", function (e) {  
+			            setTimeout(function(){  
+			                WeixinJSBridge.invoke('setFontSizeCallback',{"fontSize":0}, function(res) {  
+			                    // alert(JSON.stringify(res));  
+			                });  
+			            },0);  
+			        });  
+			    } else {  
+			        setTimeout(function(){  
+			            WeixinJSBridge.invoke('setFontSizeCallback',{"fontSize":0}, function(res) {  
+			                // alert(JSON.stringify(res));  
+			            });  
+			        },0);  
+			    }  
+			})();  
+			//2.iphone手机微信禁止字体放大，css代码
+			body{  
+		        -webkit-text-size-adjust: 100% !important;  
+		        text-size-adjust: 100% !important;  
+		        -moz-text-size-adjust: 100% !important;  
+		    }  
+		</script>
+	</body>
+</html>
