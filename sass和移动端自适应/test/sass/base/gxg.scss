@@ -1,0 +1,5 @@
+@import "pixelToRem";
+.box{
+//  使用方法:375的设计稿是100px;则此处未pixToRem(200px);
+    width:pixToRem(200px);  
+}

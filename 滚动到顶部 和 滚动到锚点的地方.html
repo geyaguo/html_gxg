@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div class="box" style="width:100%;height:1000px;">sdf</div>
+		<h2 id="test" class="字符串的正则方法">
+			字符串的正则方法 
+			<a href="#docs/regex#字符串的正则方法" class="section-link" onclick="goSection('test')">§</a> 
+			<a href="#docs/regex" onclick="goTop()">⇧</a>
+		</h2>
+		<div class="box" style="width:100%;height:1000px;">sdf</div>
+
+		<script src="jquery.min.js"></script>
+		<script type="text/javascript">
+			function goTop(e) {
+				if(e) e.preventDefault();
+				$('html, body').animate({
+					scrollTop: 0
+				}, 300);
+				history.pushState(null, null, '#' + location.hash.split('#')[1]);
+			};
+
+			function goSection(sectionId) {
+				$('html, body').animate({
+					scrollTop: ($('#' + sectionId).offset().top)
+				}, 300);
+			};
+
+			
+			
+			//HTML5 history新特性pushState、replaceState
+
+			//history.pushState(null, null, '#' + location.hash.split('#')[1]);
+			/*pushState方法
+			pushState() 有三个参数: state对象， 标题(现在是被忽略， 未作处理)， URL(可选)。 具体细节：
+
+			· state对象– state对象是一个JavaScript对象， 它关系到由pushState() 方法创建出来的新的history实体。 用以存储关于你所要插入到历史 记录的条目的相关信息。 State对象可以是任何Json字符串。 因为firefox会使用用户的硬盘来存取state对象， 这个对象的最大存储空间为640k。 如果大于这个数 值， 则pushState() 方法会抛出一个异常。 如果确实需要更多的空间来存储， 请使用本地存储。
+
+			· title— firefox现在回忽略这个参数， 虽然它可能将来会被使用上。 而现在最安全的使用方式是传一个空字符串， 以防止将来的修改。 或者可以传一个简短的标题来表示state
+
+			· URL— 这个参数用来传递新的history实体的URL， 注意浏览器将不会在调用pushState() 方法后加载这个URL。 但也许会过一会尝试加载这个URL。 比如在用户重启了浏览器后， 新的url可以不是绝对路径。 如果是相对路径， 那么它会相对于现有的url。 新的url必须和现有的url同域， 否则pushState() 将抛出异常。 这个参数是选填的， 如果为空， 则会被置为document当前的url。*/
+
+
+			//replaceState() 方法
+			/*history.replaceState() 用起来很像pushState()， 除了replaceState() 是用来修改当前的history实体而不是创建一个新的。 这个方法有时会很有用， 当 你需要对某些用户行为作反应而更新一个state对象或者当前history实体时， 可以使用它来更新state对象或者当前history实体的url。*/
+		</script>
+	</body>
+
+</html>

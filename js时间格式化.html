@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>js时间格式化</title>
+	</head>
+
+	<body>
+		<!--2.Date 属性方法 输出格式-->
+		<img src="images/2015122891304102.png" style="width:200px;" />
+		
+
+		<script>
+			//2.Date 属性方法
+			function add0(m) {
+				return m < 10 ? '0' + m : m
+			}
+
+			function format(shijianchuo) {
+				//shijianchuo是整数，否则要parseInt转换
+				var time = new Date(shijianchuo);
+				var y = time.getFullYear();
+				var m = time.getMonth() + 1;
+				var d = time.getDate();
+				var h = time.getHours();
+				var mm = time.getMinutes();
+				var s = time.getSeconds();
+				return y + '-' + add0(m) + '-' + add0(d) + ' ' + add0(h) + ':' + add0(mm) + ':' + add0(s);
+			}
+		</script>
+
+	</body>
+
+</html>

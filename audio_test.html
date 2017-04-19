@@ -22,9 +22,6 @@
 				
 				//音频详解网址http://www.open-open.com/lib/view/open1407401112973.html
 				
-				
-				var myVid = document.getElementById("audio");
-				
 				//音频一经完整的加载完毕执行
 				myVid.addEventListener("loadeddata",function() {
 		        	//控制播放和暂停
@@ -46,6 +43,13 @@
 		                $("h4 span").html(timeChange(currentTime));
 		            }, 1000);
 		        }, false);
+		        
+		        
+		        var myVid = document.getElementById("audio");
+		        //直接加载音频并且音频音量为最高
+			    var myAudio = document.getElementById("audio");
+			    myAudio.preload = "auto"
+			    myAudio.volume = 1;
 			        
 			    
 			    //播放时间转换成分秒

@@ -1,0 +1,19 @@
+$originWidth: 750px;
+$originFontSize: 32px;
+
+@function toRem($px) {
+    @return $px/$originFontSize+rem;
+}
+
+@function pixToRem($args...) {
+    $argsLength: length($args);
+    $prop: ();
+    @for $i from 1 through $argsLength {
+        @if nth($args,$i) == 0 {
+            $prop: append($prop, 0rem)
+        } @else {
+            $prop: append($prop, nth($args, $i)/$originFontSize+rem);
+        }
+    }
+    @return $prop;
+}
