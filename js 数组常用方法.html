@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js 数组常用方法</title>
+	</head>
+	<body>
+		
+		<script>
+//			js 数组常用方法 (参考网址http://www.jb51.net/article/63490.htm 和 http://www.w3school.com.cn/jsref/jsref_obj_array.asp)
+
+//			1. join() 方法将数组中所有元素都转化为字符串并连接在一起，返回最后生成的字符串。可以自己指定分隔的符号，如果不指定，默认使用逗号
+//			var arr = [1,2,3];
+//			console.log(arr.join());//"1,2,3"
+//			console.log(arr.join("-"));//"1-2-3"
+//			var a = new Array(10); //长度为10的空数组 组成下边字符串
+//			console.log(a.join("-"));//"---------"
+			
+//			2. reverse() 颠倒数组中元素的顺序。返回逆序的数组（返回的数组是其本身，原始数组已经改变了）
+//			var arr = [1,2,3];
+//			arr.reverse();    //这里的arr已经变成[3,2,1]
+//			console.log(arr.join());//"3,2,1"
+
+//			3. sort() 将数组中的元素排序并返回排序后的数组 (数组在原数组上进行排序，不生成副本。)  //默认从小到大 或者 首字母从A-Z
+//			var arr = [1, 8, 7];   
+//			arr.sort();
+//			console.log(arr); //[1,7,8]
+
+//			var arr = [1, 8, 7];  //从小到大
+//			arr.sort(function(a, b) {
+//				return a - b; 
+//			});
+//			console.log(arr); //[1,7,8]
+
+//			var arr = [1, 8, 7];  //从大到小
+//			arr.sort(function(a, b) {
+//				return b - a; 
+//			});
+//			console.log(arr); //[8,7,1]
+			
+//			var num = new Array('one', 'three', 'Six', 'Five');
+//			num.sort(); //区分大小写排序  先大写后小写
+//			console.log(num); // ["Five", "Six", "one", "three"]
+//			num.sort(function(s, t) {   //不区分大小写
+//				var a = s.toLowerCase();
+//				var b = t.toLowerCase();
+//				if(a < b) return -1;
+//				if(a > b) return 1;
+//				return 0;
+//			});
+//			console.log(num); // ["Five", "one", "Six", "three"]
+
+
+//			4. concat() 连接两个或多个数组  (该方法不会改变现有的数组，而是返回一个新数组) 参数可以是具体的值，也可以是数组对象。可以是任意多个。
+//			var arr1 = [1,2];
+//			var arr2 = [3,4];
+//			console.log(arr1.concat(arr2))   //[1,2,3,4]
+			
+//			var arr = [1,2,3];
+//			console.log(arr.concat(4,5)); // [1, 2, 3, 4, 5]
+//			console.log(arr);       // [1, 2, 3]
+//			console.log(arr.concat([4,5])); // [1, 2, 3, 4, 5]
+//			console.log(arr.concat([4,5],[6,7])); // [1, 2, 3, 4, 5,6,7]
+//			console.log(arr.concat([4,[5,[6,7]]])); // [1, 2, 3, 4, [5, [6, 7]]]
+//			console.log(arr.concat(4,[5,[6,7]])); // [1, 2, 3, 4, 5,[6,7]]
+
+
+//			5. slice() 从已有的数组中返回选定的元素。(包含起始位置元素,但是不包含结束位置元素)语法arrayObject.slice(start,end)  start必需。规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。也就是说，-1 指最后一个元素，-2 指倒数第二个元素，以此类推。 end可选。规定选取到何处。如果没有指定该参数，则选取从 start 到数组结束的所有元素。如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。
+//			请注意，该方法并不会修改数组，而是返回一个子数组。如果想删除数组中的一段元素，应该使用方法 Array.splice()。
+//			var arr = [1,2,3,4,5];
+//			console.log(arr.slice(0,3)); // [1, 2, 3]
+//			console.log(arr); // [1, 2, 3, 4, 5]
+//			console.log(arr.slice(3));//[4, 5]
+//			console.log(arr.slice(-3));// [3, 4, 5]
+//			console.log(arr.slice(-3,-1));// [3, 4]
+//			console.log(arr.slice(2,-1));// [3, 4]
+
+//			6. splice() (删除元素时包含起始位置的元素,但是不包含结束位置的元素)(添加元素时在起始位置前添加) 方法向/从数组中添加/删除项目，然后返回被删除的项目。(该方法会改变原始数组。)  语法:arrayObject.splice(index,howmany,item1,.....,itemX) 参数描述: 1. index 必需。整数，规定添加/删除项目的位置，使用负数可从数组结尾处规定位置  2. howmany 必需。要删除的项目数量。如果设置为 0，则不会删除项目。 3. item1, ..., itemX  可选。向数组添加的新项目。
+//			第一个参数指定了插入或删除的起始位置，第二个参数指定了应该从数组中删除的元素的个数。第二个参数省略则默认删到末尾。
+//			var arr = [1,2,3,4,5,6,7,8];
+//			console.log(arr.splice(4)); //[5, 6, 7, 8]
+//			console.log(arr); // [1, 2, 3, 4]
+//			console.log(arr.splice(0,3));// [1, 2, 3]
+//			console.log(arr); // [1, 4]
+
+//			var arr = [1,2,3,4,5];
+//			console.log(arr.splice(2,0,'a','b')); // []
+//			console.log(arr); // [1, 2, "a", "b", 3, 4, 5]
+//			console.log(arr.splice(2,1,[1,2],3));// ["a"]
+//			console.log(arr); // [1, 2, [1, 2], 3, "b", 3, 4, 5]
+
+//			7. push() 向数组的末尾添加一个或多个元素，并返回新的长度。参数可以写多个,一次添加
+//			var arr = [1,2];
+//			console.log(arr.push(3,4));//4
+//			console.log(arr);//[1, 2, 3]
+
+//			8. pop() 删除并返回数组的最后一个元素。
+//			var arr = [1,2,3,4];
+//			console.log(arr.pop());//4
+//			console.log(arr);//[1,2,3]
+	
+//			9. unshift() 向数组的开头添加一个或更多元素，并返回新的长度。
+//			var arr = [3,4];
+//			console.log(arr.unshift(1,2));//4
+//			console.log(arr);//[1, 2, 3,4]
+
+//			10. shift() 把数组的第一个元素从其中删除，并返回第一个元素的值。
+//			var arr = [1,2,3,4];
+//			console.log(arr.shift());// 1
+//			console.log(arr);// [2, 3, 4]
+
+
+
+/*
+ js  数组常用方法
+ * */
+
+//			1. forEach()   第一个参数是循环数组中的值,第二个参数是循环数组中的值的位置,第三个参数是整个循环的数组本身
+//			var data = [1,2,3,4,5];
+//			var sum = 0;
+//			data.forEach(function(value){  //只使用了第一个参数（函数），调用的函数也只使用了第一个参数数组元素
+//			 sum += value;
+//			});
+//			console.log(sum);//15
+//			console.log(data);// [1, 2, 3, 4, 5]
+			
+//			var data = [1,2,3,4,5];
+//			var sum = 0;
+//			data.forEach(function(value,item,data){   //调用的函数具有了三个参数
+//			  data[item] = value*value; //取平方
+//			});
+//			console.log(data);// [1, 4, 9, 16, 25]
+
+
+//			2. map() 返回一个由原数组中的每个元素调用一个指定方法后的返回值组成的新数组。
+//			语法:array.map(function(currentValue,index,arr), thisValue)  一般不传thisValue(第二个参数)值
+//			参数说明:函数function(currentValue, index,arr)必须。数组中的每个元素都会执行这个函数,函数中参数:currentValue必须。当前循环数组中的元素的值; index 可选。当前元素的索引值 ; arr可选。当期元素属于的数组对象
+//			thisValue可选。对象作为该执行回调时使用，传递给函数，用作 "this" 的值。如果省略了 thisValue ，"this" 的值为 "undefined" (一般用是只传函数,不传thisValue)
+
+//			var data = [1, 2, 3, 4, 5];
+//			var data1 = data.map(function(value, index) {
+//				return ++value;
+//			});
+//			console.log(data); // [1, 2, 3, 4, 5]
+//			console.log(data1); // [2, 3, 4, 5, 6]	
+
+//			3. filter() 创建一个新的匹配过滤条件的数组。 (不会改变原数组。只会生成一个新的数组)
+//			arr.filter(callback[, thisArg])
+//			callback : 回调函数,返回true表示保留该元素（通过测试），false则不保留。回调函数的参数 (element, index, array)。第一个参数是元素的值  第二个参数是元素的索引  第三个参数是被遍历的数组
+//			thisArg : 可选。执行 callback 时的用于 this 的值。(一般用时只传回调函数,不传thisArg);
+//			var data = [1, 2, 3, 4, 5];
+//			var data1 = data.filter(function(value) {
+//				return value <= 3;
+//			});
+//			var data2 = data.filter(function(value) {
+//				return value > 3;
+//			});
+//			console.log(data); // [1, 2, 3, 4, 5]
+//			console.log(data1); // [1,2,3]
+//			console.log(data2); // [4,5]			
+			
+//			4. indexOf() 检查元素(参数)是否是数组中的某一项。匹配到返回对应的位置（位置从0开始）（找到了一个就停止了）,没有匹配到返回-1.
+//			语法 : array.indexOf(item,start)  参数解释 : item->必须。查找的元素; start->可选的整数参数,规定在字符串中开始检索的位置。它的合法取值是 0 到 stringObject.length - 1。如省略该参数，则将从字符串的首字符开始检索。
+//			start参数为-2时,是从倒数第二个开始往后检索.为-3时是从倒数第三个开始往后检索.
+//			var data = ['a','b','a','c','a'];
+//			console.log(data.indexOf('a')); //0
+//			console.log(data.indexOf('d')); //-1
+//			console.log(data.lastIndexOf('a'));//4
+			
+//			5. lastIndexOf() 和第四个indexOf()用法一模一样;只是lastIndexOf()是从后往前检索,而indexOf()是从前往后检索.
+//			语法也是array.lastIndexOf(item,start) 参数解释 : item->必须。查找的元素; start->可选的整数参数,规定在字符串中开始检索的位置。它的合法取值是 0 到 stringObject.length - 1。如省略该参数，则将从字符串的首字符开始检索。
+//			start参数为-2时,是从倒数第二个开始往前检索.为-3时是从倒数第三个开始往前检索.
+//			var data = ['a','b','a','c','a'];
+//			console.log(data.lastIndexOf('a',-2));//2 从倒数第二个开始
+//			console.log(data.lastIndexOf('a',1));//0  从顺序第二个往前
+			
+//			6. reduce() 相当于一个函数累加器，接受一个回调函数的结果，然后将前一次的函数结果再和下一次的数据再次执行此回调函数.
+//			语法 : Array.reduce(function(previousValue,currentValue,index,array){},num);  //num可以不写,
+//			参数解释 : return xxx 需要执行的函数结果，previousValue->上一次的值; currentValue->当前值; index->当前值的索引; array->数组; num->初始值(可以是数字也可以是数组)
+//			var flattened = [[0, 1], [2, 3], [4, 5]].reduce(function(a, b) {
+//				return a.concat(b);
+//			}, []);
+//			console.log(flattened)  //[0, 1, 2, 3, 4, 5]
+//			var flattened2 = [1,2,3].reduce(function(a, b) {
+//				return a+b;
+//			});
+//			console.log(flattened2); //6
+//			var flattened3 = [1,2,3].reduce(function(a, b) {
+//				return a+b;
+//			},1);
+//			console.log(flattened3)  //7
+
+//			7. reduceRight() 和reduce()用法一样，不同的是它按照数组索引从高到低（从右到左）处理数组，而不是正常的从低到高。
+//			var flattened = [[0, 1], [2, 3], [4, 5]].reduceRight(function(a, b) {
+//				return a.concat(b);
+//			}, []);
+//			console.log(flattened)  //[0, 1, 2, 3, 4, 5]
+//			var flattened2 = [1,2,3].reduceRight(function(a, b) {
+//				return a+b;
+//			});
+//			console.log(flattened2); //6
+//			var flattened3 = [1,2,3].reduceRight(function(a, b) {
+//				return a+b;
+//			},1);
+//			console.log(flattened3)  //7
+			
+//			8. isArray() 判断是否是数组
+//			var arr = [1,2];
+//			var obj = {"s":1};
+//			console.log(Array.isArray(arr));//true
+//			console.log(Array.isArray(obj));//false
+//			console.log(Array.isArray([]));//true
+//			console.log(Array.isArray({}));//false
+
+//			9. every()和some()  //不常用
+// 			every()就是数组中所以元素都满足函数指定的条件时 返回true; some()就是某一项满足时就返回 true
+//			var data = [1, 2, 3, 4, 5];
+//			var data1 = data.every(function(value) {
+//				return value < 4;
+//			});
+//			var data2 = data.some(function(value) {
+//				return value > 4;
+//			});
+//			console.log(data); // [1, 2, 3, 4, 5]
+//			console.log(data1); // false
+//			console.log(data2); // true
+
+		</script>
+	</body>
+</html>

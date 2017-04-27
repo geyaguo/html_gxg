@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>实用小功能2</title>
+	</head>
+	<body>
+		<div class="box" style="width:200px;height:200px;background:#000000;margin:300px auto;">
+			<div class="box2" style="width:100px;height:100px;background:#F3F3F3;margin:0 auto;"></div>
+		</div>
+		
+		<script src="jquery.min.js"></script>
+		<script>
+//			1.------鼠标移入移出事件 (如果子元素在父元素的边上,移入移出都会触发事件)
+
+//			移入事件mouseover与mouseenter
+//			不论鼠标指针穿过被选元素还是任何子元素，都会触发 mouseover 事件。
+//			只有在鼠标指针穿过被选元素时，才会触发 mouseenter 事件。
+//			移出事件mouseout与mouseleave
+//			不论鼠标指针离开被选元素还是任何子元素，都会触发 mouseout 事件。
+//			只有在鼠标指针离开被选元素时，才会触发 mouseleave 事件。
+			
+			//鼠标的移入移出(子元素也会触发事件)
+//	        $(".box").mouseover(function (){  
+//	            alert("鼠标移入") 
+//	        }).mouseout(function (){  
+//	            alert("鼠标移出") 
+//	        });  
+	        //合成事件 hover()  (子元素也会触发相当于mouseover和mouseout事件)
+//	        $(".box").hover(function (){  
+//	            alert("鼠标移入")   
+//	        },function (){  
+//	            alert("鼠标移出")  
+//	        });  
+			//鼠标的移入移出
+//			$(".box").mouseenter(function (){  
+//	            alert("鼠标移入") 
+//	        }).mouseleave(function (){  
+//	            alert("鼠标移出") 
+//	        });
+			
+			2.------
+			
+	          
+		</script>
+	</body>
+</html>
