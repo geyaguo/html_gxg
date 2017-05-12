@@ -71,6 +71,10 @@
 		<iframe src="http://116.62.42.225:8080/view/registerProtocol?userToken=&platformType=WX&_=1483600640515" style="width: 100%; height:100%;border: none;;"></iframe>-->
 
 		<script>
+		//手机号中间4位用*代替(必须是字符串) 用var phone="18346512131" 或者  下面的方法; 但是不能这样写var phone = 18346512131.toString(); 这种写法会报错
+//		var num = 18346512131;
+//		var phone = num.toString();
+//		console.log(phone.substring(0,3)+"****"+phone.substring(7))
 		
 		//禁止滚动
 		//window.addEventListener( ‘scroll’, noscroll );
@@ -144,24 +148,25 @@
 			//		});
 
 			//弹出带有确定按钮的弹窗
-			//		function IsSure(){
-			//			var mes=confirm("您确定要删除吗？");//自定义标题；确定返回true,取消返回false;
-			//			if(mes==true){
-			//				alert(1)
-			//			}else{
-			//				alert(2)
-			//			};
-			//		};
+//					function IsSure(){
+//						var mes=confirm("您确定要删除吗？");//自定义标题；确定返回true,取消返回false;
+//						if(mes==true){
+//							alert(1)
+//						}else{
+//							alert(2)
+//						};
+//					};
+//					IsSure()
 
 			//!!!!!!!
 			//json对象和字符串相互转换
 			//		最常用的方法
 			//		JSON.parse(jsonstr); //可以将json字符串转换成json对象 
-			//		JSON.stringify(jsonobj); //可以将json对象转换成json对符串
+			//		JSON.stringify(jsonobj); //可以将json对象转换成json字符串
 			//		1：jQuery插件支持的转换方式 代码如下: 
 			//		$.parseJSON( jsonstr ); //jQuery.parseJSON(jsonstr),可以将json字符串转换成json对象
 			//		反过来，使用 serialize 系列方法：如：var fields = $("select, :radio").serializeArray();
-			//		2：!!!浏览器支持的转换方式(Firefox，chrome，opera，safari，ie9，ie8)等浏览器 
+			//		2：!!!浏览器支持的转换方式(Firefox，chrome，opera，safari，ie9，ie8)等浏览器 (-------------最常用的方法--------------)
 			//		代码如下: 
 			//		JSON.parse(jsonstr); //可以将json字符串转换成json对象 
 			//		JSON.stringify(jsonobj); //可以将json对象转换成json对符串

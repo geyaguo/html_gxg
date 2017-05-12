@@ -5,13 +5,18 @@
 		<title>实用小功能2</title>
 	</head>
 	<body>
-		<div class="box" style="width:200px;height:200px;background:#000000;margin:300px auto;">
+		<!--<div class="box" style="width:200px;height:200px;background:#000000;margin:300px auto;">
 			<div class="box2" style="width:100px;height:100px;background:#F3F3F3;margin:0 auto;"></div>
-		</div>
+		</div>-->
 		
 		<script src="jquery.min.js"></script>
 		<script>
-//			1.------鼠标移入移出事件 (如果子元素在父元素的边上,移入移出都会触发事件)
+		
+//			1.------输入框内容变换时触发该事件
+//			$(".search_text").on("input propertychange", function() {})
+
+
+//			2.------鼠标移入移出事件 (如果子元素在父元素的边上,移入移出都会触发事件)
 
 //			移入事件mouseover与mouseenter
 //			不论鼠标指针穿过被选元素还是任何子元素，都会触发 mouseover 事件。
@@ -25,7 +30,7 @@
 //	            alert("鼠标移入") 
 //	        }).mouseout(function (){  
 //	            alert("鼠标移出") 
-//	        });  
+//	        });
 	        //合成事件 hover()  (子元素也会触发相当于mouseover和mouseout事件)
 //	        $(".box").hover(function (){  
 //	            alert("鼠标移入")   
@@ -39,9 +44,30 @@
 //	            alert("鼠标移出") 
 //	        });
 			
-			2.------
 			
-	          
+//			3.------jquery判断一个元素是否含有一个指定的类（class）
+//			方法一  使用is(".classname")的方法
+//			if($('div').is('.redColor')){
+//              alert("该div含有redColor的类名")
+//        	}else{
+//        		alert("该div没有redColor的类名")
+//        	}
+//			方法二  使用hasClass("classname")的方法(注意jquery的低版本可能是hasClass(".classname"))
+//			if($('div').hasClass('redColor')){
+//              alert("该div含有redColor的类名")
+//        	}else{
+//        		alert("该div没有redColor的类名")
+//        	}
+			
+
+//			4.-------验证手机号
+//			if(/^1[34578]\d{9}$/.test($("#phone").val())){
+//				alert(id为phone的输入框内容是手机号)
+//			}
+
+			
+//			5.--------
+			console.log(0.1+0.2);
 		</script>
 	</body>
 </html>

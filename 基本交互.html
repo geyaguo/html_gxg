@@ -4,14 +4,19 @@
 		<meta charset="UTF-8">
 		<title>交互</title>
 		<script src="jquery.min.js"></script>
+		<script src="js/jquery.form.min.js"></script>
 	</head>
 	<body>
+		<!--<form>
+			<input type="text" name="gxg1" />
+			<input type="text" name="gxg2" />
+			<button type="button">提交</button>
+		</form>-->
+		
 		<script>
 			$(document).ready(function(){
-//				var a;
-//				alert(parseInt(a))
-				//注册
-				$(".zhuce_btn").click(function(){
+				//jquery的post注册
+				/*$(".zhuce_btn").click(function(){
 					$.post('../Btoc/register',{
 						mobile:$("input[name=mobile]").val(),
 						password:$("input[name=password]").val(),
@@ -27,9 +32,11 @@
 							$(".denglu").css("display","block");
 						};
 					});
-				});
-				//获取验证码
-				$(".getpassbtn").click(function(){
+				});*/
+				
+				
+				//jquery的getjson获取验证码
+				/*$(".getpassbtn").click(function(){
 					$.getJSON("../Btoc/getMessage",{mobile : $("input[name=mobile]").val()},function(json){
 						if(json.status){
 							alert(json.msg);
@@ -41,9 +48,11 @@
 							},60000)
 						}
 					});
-				});
-				//登录
-				$(".denglu_btn").click(function(){
+				});*/
+				
+				
+				//jquery的post登录
+				/*$(".denglu_btn").click(function(){
 					$.post('../Btoc/login',{
 						mobile:$("input[name=user]").val(),
 						password:$("input[name=upass]").val(),
@@ -68,40 +77,74 @@
 						       	   
 						        }
 						 	});
-						 	
-						 	
-						 	//通过ajax获取数据
-//						 	$.ajax({
-//						        type: "post",
-//						        url: "getCount",
-//						        data:{tel:"123",password:"123"},
-//						        dataType: "json",
-//						        success: function(data){
-//						       	   console.log(data.count);
-//						       	   $(".num").html(data.count);
-//						       	   
-//						        }
-//						 	});
-						 	//摇一摇————————————————
-							var myShakeEvent = new Shake({
-						        threshold: 15
-						    });
-						    myShakeEvent.start();
-						    window.addEventListener('shake', shakeEventDidOccur, false);
-						    function shakeEventDidOccur () {
-						    	$(".mask").css("display","block");
-						    	$("#img1").css("display","block");
-						    	var audio=document.getElementById("audio");
-						    	audio.play();
-								setTimeout(function(){
-						            audio.pause();
-						            shakePrize();
-						        }, 1000);
-						    };
-						    //摇一摇————————————————完
 						};
 					});
-				});
+				});*/
+				
+				
+				//jquery的ajax获取数据(简单的)
+			 	/*$.ajax({
+			        type: "post",
+			        url: "www.baidu.com/test",
+			        data:{tel:"123",password:"123"},
+			        dataType: "json",
+			        success: function(data){
+			       	   console.log(data.count);
+			       	   $(".num").html(data.count);
+			        },
+					error:function(){
+						console.log("接口报错了")
+					}
+			 	});*/
+
+
+				//jquery的ajax获取数据
+				/*$.ajax({
+				    url:'/comm/test1.php',
+				    type:'POST', //GET
+				    async:true,    //或false,是否异步
+				    data:{
+				        name:'yang',age:25
+				    },
+				    timeout:5000,    //超时时间
+				    dataType:'json',    //返回的数据格式：json/xml/html/script/jsonp/text
+				    beforeSend:function(xhr){
+				        console.log(xhr)
+				        console.log('发送前')
+				    },
+				    success:function(data,textStatus,jqXHR){
+				        console.log(data)
+				        console.log(textStatus)
+				        console.log(jqXHR)
+				    },
+				    error:function(xhr,textStatus){
+				        console.log('错误')
+				        console.log(xhr)
+				        console.log(textStatus)
+				    },
+				    complete:function(){
+				        console.log('结束')
+				    }
+				})*/
+				
+				//jquery的ajaxsubmit()方法提交form表单(该方法需要引用jquery.form.js插件)  如js目录中的jquery.form.min.js
+				/*$("button").click(function(){
+					$("form").ajaxSubmit({
+			            type: 'post', // 提交方式 get/post
+			            url: 'www.geyaguo.com/test', // 需要提交的 url
+			            data: {			//除了input和textarea中的name名字提交之外,这里还可以添加其他需要提交的字段,(input中属性name会提交,这里的data数据也会提交)
+			                'title': 123,
+			                'content': 456
+			            },
+			            success: function(data) { // data 保存提交后返回的数据，一般为 json 数据
+			                // 此处可对 data 作相关处理
+			                alert('提交成功');
+			            }
+			        });
+			        $("form").resetForm(); // 提交后重置表单
+			        return false; // 阻止表单自动提交事件
+				});*/
+				
 	 		});
 		</script>
 	</body>

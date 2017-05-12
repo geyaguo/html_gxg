@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--标签页显示自定义的图标, 把favicon.ico图标放到网站根目录下，在网页的<head></head>中加入-->
+		<!--<link rel="shortcut icon" href="images/g2.jpg" type="image/x-icon">-->
+		<link rel="shortcut icon" href="images/g2.ico" type="image/ico">
+	</head>
+	<body>
+		
+		<p style="font-size:30px;font-family: KaiTi;font-weight: bold;color:#FFFFFF;background:#000000;">测试字体</p>
+		<p style="font-size:30px;font-family: KaiTi;font-weight: bold;color:#FFFFFF;background:#000000;">格雅果</p>
+		
+		
+		<form>
+			<!--单选框-->
+			您最喜欢水果？<br /><br /> 
+			<label><input name="Fruit" type="radio" value="" />苹果 </label> 
+			<!--默认选中的一项-->
+			<label><input name="Fruit" type="radio" value="桃子" checked />桃子 </label> 
+			<label><input name="Fruit" type="radio" value="香蕉" />香蕉 </label> 
+			<label><input name="Fruit" type="radio" value="梨" />梨</label> 
+			<label><input name="Fruit" type="radio" value="其它" />其它</label> 
+			
+			<br /><br />
+			
+			<!--复选框-->
+			您对那些运动感兴趣，请选择： <br /><br />
+			<input type="checkbox" name="checkbox1" value="跑步"> 跑步 
+			<!--默认选中的一项-->
+			<input type="checkbox" name="checkbox2" value="打球" checked> 打球 
+			<input type="checkbox" name="checkbox3" value="登山"> 登山 
+			<input type="checkbox" name="checkbox4" value="健美"> 健美<br> 
+			
+			<button type="button">提交</button>
+		</form>
+		
+		<script src="jquery.min.js"></script>
+		<script src="js/jquery.form.min.js"></script>
+		<script>
+			
+//			单选框和复选框提交
+//			$("button").click(function(){
+//				$("form").ajaxSubmit({
+//		            type: 'post', // 提交方式 get/post
+//		            url: 'www.geyaguo.com/test', // 需要提交的 url
+//		            data: {			//除了input和textarea中的name名字提交之外,这里还可以添加其他需要提交的字段,(input中属性name会提交,这里的data数据也会提交)
+//		                'title': 123,
+//		                'content': 456
+//		            },
+//		            success: function(data) { // data 保存提交后返回的数据，一般为 json 数据
+//		                // 此处可对 data 作相关处理
+//		                alert('提交成功');
+//		            }
+//		        });
+//			})
+		</script>
+	</body>
+</html>
