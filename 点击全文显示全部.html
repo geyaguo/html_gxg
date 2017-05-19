@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			.dongtai_height_xianzhi_gxg {
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				/*需要显示的行数*/
+				-webkit-line-clamp: 5;   
+				overflow: hidden;
+				font-size: 0.875rem !important;
+				line-height: 1.125rem;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<p class="dongtai_height_xianzhi_gxg">轻松一下轻松一下轻松一下轻松一下轻松轻松一下轻松一下轻松一下轻松一下轻松轻松一下轻松一下轻松一下轻松一下轻松轻松一下轻松一下轻松一下轻松一下轻松轻松一下轻松一下轻松一下轻松一下轻松轻松一下轻松一下轻松一下轻松一下轻松轻松一下轻松一下轻松一下轻松一下轻松轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下</p>
+		<a class="dongtai_height_quanwen_gxg" style="display:none;">全文</a>
+		
+		<p class="dongtai_height_xianzhi_gxg">轻松松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下轻松一下</p>
+		<a class="dongtai_height_quanwen_gxg" style="display:none;">全文</a>
+		
+		<script src="jquery.min.js"></script>
+		<script>
+		
+			$(function(){
+				//判断是否显示"全文"按钮
+				$(".dongtai_height_xianzhi_gxg").map(function() {
+				    if (this.offsetHeight<this.scrollHeight) {
+				        //显示了省略号
+				        $(this).next().show();
+				    }else{
+				    	//没有显示省略号
+				    	$(this).next().hide();
+				    };
+				});
+				$(".dongtai_height_quanwen_gxg").click(function(){
+					if($(this).html() == "全文") {
+						$(this).prev().css("-webkit-line-clamp", "initial");
+						$(this).html("收起");
+					} else {
+						$(this).prev().css("-webkit-line-clamp", "5");
+						$(this).html("全文");
+					}
+				})
+			})
+			
+		</script>
+	</body>
+
+</html>

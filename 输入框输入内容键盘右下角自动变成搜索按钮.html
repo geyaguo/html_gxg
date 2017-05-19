@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>搜索</title>
+		<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	</head>
+
+	<body>
+		<form action="" method="get" id="J_search_artical" enctype='application/json'> 
+			<input type="search" id="J_search_content" placeholder="搜索" /> 
+		</form>
+	</body>
+	<script>
+		
+		/*1.<input type="search">
+		2.input放在form里面
+		
+		1 使用form表单
+		2 form表单action填空，使用js发送请求
+		3 form上增加enctype='applicaion/json'
+		4 点击搜索按钮的时候，会触发onsubmit事件*/
+		
+		
+		window.onload = function() {
+				document.getElementById("J_search_artical").onsubmit = function() {
+						var title = document.getElementById("J_search_content").value;
+						alert('title:' + title);
+						document.getElementById("J_search_content").blur() 
+						// do search
+						return false;			
+				};
+		}
+	</script>
+
+</html>
