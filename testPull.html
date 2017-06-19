@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<title>测试上拉加载和下拉刷新</title>
+		<style>
+			body {
+				overflow-y: auto;
+				margin: 0
+			}
+			
+			.header {
+				height: 100px;
+				background-color: #E9DC51;
+			}
+			
+			.footer {
+				height: 100px;
+				background-color: #E9DC51;
+			}
+			
+			.outerScroller {
+				display: block;
+				width: 100%;
+				overflow-y: hidden;
+			}
+			
+			li {
+				list-style-type: none;
+				height: 55px;
+				background: #ccc;
+				border-bottom: solid 1px #fff;
+				text-align: left;
+				line-height: 35px;
+				padding-left: 15px;
+			}
+			
+			ul {
+				width: 100%;
+				padding: 0px;
+				margin: 0;
+			}
+		</style>
+	</head>
+
+	<body v-cloak>
+		<div class="outerScroller" id="outerScroller">
+			<ul>
+				<li>name</li>
+				<li>name</li>
+				<li>name</li>
+				<li>name</li>
+				<li>name</li>
+				<li>name</li>
+				<li>name</li>
+				<li>name</li>
+				<li>name</li>
+				<li>name</li>
+				<li>name</li>
+				<li v-for="item in pageData">{{item.name}}</li>
+			</ul>
+		</div>
+		<script src="js/jquery-1.8.0.js"></script>
+		<script src="js/vue.min.js"></script>
+		<script src="js/pull-load.js"></script>
+		<script src="js/utils2.js"></script>
+		<script>
+			(function(document, window, $, Utils) {
+				'use strict';
+				var vm;
+				$(function() {
+					var fns = {
+						getListData: function(end, isUp) {
+							Utils.getSimpleJson({
+								url: "/core/tenants",
+								params: {
+									rows: 2,
+									page: isUp ? (vm.pageNo + 1) : 1
+								},
+								fn: function(data) {
+									vm.pageNo = data.pageNo;
+									vm.pageData = isUp ? (vm.pageData.concat(data.voList)) : (data.voList);
+									end(!data.hasNext);
+								}
+							});
+						}
+					};
+					window.fns = fns;
+					init();
+				});
+
+				//入口方法
+				function init() {
+					vm = Utils.vueInit({
+						vueData: {
+							pageData: [],
+							pageNo: 0
+						}
+					});
+
+					Utils.pullLoad({
+						container: "body",
+						downEnable: true,
+						downFn: function(end) {
+							fns.getListData(end, false);
+						},
+						upFn: function(end) {
+							fns.getListData(end, true);
+						}
+					});
+				}
+
+			})(document, window, jQuery, Utils);
+		</script>
+	</body>
+
+</html>

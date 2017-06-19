@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>上拉加载和下拉刷新</title>
+	</head>
+	<body>
+		
+		
+		<script src="js/jquery.min.js"></script>
+		<script src="js/pull-load.js"></script>
+		<script src="js/vue.min.js"></script>
+		<script>
+			$.ajax({
+				type: "get",
+				url: "",
+				async: false,
+				success: function(rs) {
+					components[key] = {
+						props: ['tempData', 'extData'], //模板数据，扩展数据
+						template: rs,
+						methods: methods
+					};
+				}
+			});
+		</script>
+	</body>
+</html>

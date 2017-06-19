@@ -11,6 +11,16 @@
 			//模拟首页点击
 			var defaultTab = document.getElementById("defaultTab");
     		mui.trigger(defaultTab, 'tap');
+    		
+    		/*//mui准备好了执行
+			 mui.ready(function() {
+				var header = document.querySelector('header.mui-bar');
+				var list = document.getElementById('list');
+				//calc hieght
+				list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
+				//create
+				window.indexedList = new mui.IndexedList(list);
+			});*/
 		</script>
 	</body>
 </html>

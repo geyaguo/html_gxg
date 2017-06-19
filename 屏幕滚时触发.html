@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script src="jquery.min.js"></script>
+		<script>
+			 $(window).scroll(function(){
+                var ht=$('.nav').height();
+                console.log(ht);
+                if($(window).scrollTop()>=ht){
+                    $(".nav").addClass("fixednav");
+                    /*$(".navTmp").fadeIn();*/
+                }else{
+                    $(".nav").removeClass("fixednav")
+                    /*$(".navTmp").fadeOut();*/
+                }
+            });
+            
+            
+            
+            
+//          左右菜单(滑动时对应的菜单背景色改变)
+			
+			//选择分类
+			$(".sort").click(){
+				me.addClass("active").siblings().removeClass("active");
+				$("body").scrollTop($(".classify-list-box")[me.index()].offsetTop-$(".classify-list-box")[0].offsetTop);
+				console.log($(".classify-list-box")[me.index()].offsetTop)
+			};
+			//滚动时
+			$(window).scroll(function(){
+		        var scrollTop=$("body").scrollTop();
+		        for(var i=0;i<$(".classify-list-box").length;i++){
+		        	if(scrollTop>=$(".classify-list-box")[i].offsetTop-$(".classify-list-box")[0].offsetTop){
+		        		$(".classify-page-list").eq(i).addClass("active").siblings().removeClass("active");
+		        	}
+		        }
+		    });
+		</script>
+	</body>
+</html>

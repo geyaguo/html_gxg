@@ -7,7 +7,6 @@
 		<!--在360类似的双核浏览器中优先使用极速模式(极速模式一般是谷歌内核,兼容模式一般是ie内核)-->
 		<meta name="renderer" content="webkit|ie-comp|ie-stand" />
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
-		<meta name="renderer" content="webkit" />
 		
 		<script src="jquery.min.js"></script>
 		<style>
@@ -57,10 +56,38 @@
 				zoom: 1;
 				/* for ie6 & ie7 */ 
 			}
+			
+			/*设置button属性未disabled时的样式*/
+			button:disabled{
+		        color: #808080;
+		    }
+			
+			/*textarea禁止伸缩,并且隐藏右下角的伸缩按钮*/
+			.textarea{
+				resize:none;
+			}
+			/*修改input框和textarea的placeholder字体颜色*/
+			.input::-webkit-input-placeholder{
+                color:#C1C0C0;
+            }
+            
+            .div{
+            	background-image: linear-gradient(-180deg, #FFFFFF 0%, #F2F2F2 100%);
+        		box-shadow: 0 2px 4px 0 rgba(0,0,0,0.11), 0 1px 0 0 #D7D7D7;
+        		text-shadow: 0 2px 4px rgba(0,0,0,0.25);
+            }
+			
 		</style>
 	</head>
 
 	<body>
+		
+		<div class="div" style="width:100%;height:30px;">水电费水电费</div>
+		
+		
+		<!--修改input框和textarea的placeholder字体颜色-->
+		<input class="input" type="text" placeholder="请输入内容" />
+		
 		
 		<!--o.5px像素的横线-->
 		<div style="width:100%;height:1px;background:#E5E5E5;transform: scaleY(0.5);"></div>
@@ -297,6 +324,19 @@
 			//js 使滚动条始终在底部  div的id未gxg
 //			var oDiv = document.getElementById("#gxg");
 //			oDiv.scrollTop = oDiv.scrollHeight;
+
+	
+			/*永远不要直接使用undefined进行变量判断；
+			使用typeof和字符串'undefined'对变量进行判断。
+			// not good
+			if (person === undefined) {
+			    ...
+			}
+			// good
+			if (typeof person === 'undefined') {
+			    ...
+			}*/
+				
 			
 		</script>
 	</body>

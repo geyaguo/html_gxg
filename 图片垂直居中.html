@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+		<title>方法1- 未知高度的图片垂直居中</title>
+		<style type="text/css">
+			body {
+				height: 100%;
+			}
+			
+			#box {
+				width: 500px;
+				height: 400px;
+				display: table;
+				text-align: center;
+				border: 1pxsolid#d3d3d3;
+				background: #fff;
+			}
+			
+			#box span {
+				display: table-cell;
+				vertical-align: middle;
+			}
+			
+			#box img {
+				border: 1pxsolid#ccc;
+			}
+		</style>
+		<!--[if lte IE 7]>
+		<style type="text/css">
+			? #box {
+				position: relative;
+				overflow: hidden;
+			}
+			
+			#box span {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+			}
+			
+			#box img {
+				position: relative;
+				left: -50%;
+				top: -50%;
+			}
+		</style>
+		<![endif]-->
+	</head>
+
+	<body>
+		<!--还有好几个方法-->
+		<!--参考路径  https://zm10.sm-tc.cn/?src=l4uLj8XQ0IiIiNGRkIiekp6YlpzRkZqL0JOWnY2ejYaM0Imam57Qm5qLnpaT0M7Gys8%3D&uid=0611716c23ff71609beb6477f3dbaf73&hid=2332ad02430c2007e45b3762a5cb37f2&pos=2&cid=9&time=1495636038676&from=click&restype=1&pagetype=0000004000000402&bu=news_natural&query=%E5%9B%BE%E7%89%87%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD&mode=&v=1&uc_param_str=dnntnwvepffrgibijbprsvdsdichei-->
+		
+		<!--将外部容器的显示模式设置成display:table，这个设置的意思不用多说了吧… img标签外部再嵌套一个span标签，并设置span的显示模式为display:table-cell，这样span内部的内容就相当于表格，可以很方便的使用vertical-align属性来对齐其中的内容了。-->
+
+		<div id="box">
+			<span><img src="images/photo.jpg"alt=""/></span>
+		</div>
+
+	</body>
+
+</html>

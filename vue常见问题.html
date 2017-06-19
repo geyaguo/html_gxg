@@ -15,6 +15,13 @@
 	<body>
 		<!--class名mui-active要加单引号(官网上没加)-->
 		<div class="div" v-bind:class="{'mui-active':panduan}"></div>
+		
+		
+		<!--vue版本1.0 和 2.0相反. ----- 1.0是  (item,index)  2.0是(index,item)    其中index是索引-->
+		<template v-for="(index,item) in goodsData">
+			<img class="goods-img" :src="imgUrl + item.img">
+		</template>
+		
 	</body>
 	
 	
@@ -23,8 +30,31 @@
 		var vm = new Vue({
 			el: 'body',
 			data:{
-				panduan:true
+				panduan:true,
+//				inputState:123
 			}
 		})
+		
+		//创建一个inputState变量内容是123(类似于上面的inputState)
+		vm.$set("inputState", 123);
+		
+		//vue渲染完数据之后在执行该方法
+//		vm.$nextTick(function(){
+//			fns.fullText();
+//		});
+		
+		/*vm.vueData.friend = data;
+		//v-for渲染已经完成之后初始化索引列表
+		vm.$nextTick(function(){
+			//mui准备好了执行
+			 mui.ready(function() {
+				var header = document.querySelector('header.mui-bar');
+				var list = document.getElementById('list');
+				//calc hieght
+				list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
+				//create
+				window.indexedList = new mui.IndexedList(list);
+			});
+		});*/
 	</script>
 </html>

@@ -7,12 +7,15 @@
 	</head>
 
 	<body>
-		<!--2.Date 属性方法 输出格式-->
+		<!--1.Date 属性方法 输出格式-->
 		<img src="images/2015122891304102.png" style="width:200px;" />
-		
 
+		<!--2.求时间差-->
+		<h2 class="gxgDate"></h2>
+
+		<script src="jquery.min.js"></script>
 		<script>
-			//2.Date 属性方法
+			//1.Date 属性方法  显示为(2017-02-22 14:02:50)
 			function add0(m) {
 				return m < 10 ? '0' + m : m
 			}
@@ -28,6 +31,95 @@
 				var s = time.getSeconds();
 				return y + '-' + add0(m) + '-' + add0(d) + ' ' + add0(h) + ':' + add0(mm) + ':' + add0(s);
 			}
+
+			//2.求时间差函数
+			function timeDifference() {
+				var date1 = "2017/05/20 00:00:00"; //开始时间
+				var date2 = new Date(); //结束时间
+				var date3 = date2.getTime() - new Date(date1).getTime(); //时间差的毫秒数
+
+				//计算出相差天数
+				var days = Math.floor(date3 / (24 * 3600 * 1000))
+
+				//计算出相差小时数
+				var leave1 = date3 % (24 * 3600 * 1000) //计算天数后剩余的毫秒数
+				var hours = Math.floor(leave1 / (3600 * 1000))
+					//计算相差分钟数
+				var leave2 = leave1 % (3600 * 1000) //计算小时数后剩余的毫秒数
+				var minutes = Math.floor(leave2 / (60 * 1000))
+
+				//计算相差秒数
+				var leave3 = leave2 % (60 * 1000) //计算分钟数后剩余的毫秒数
+				var seconds = Math.round(leave3 / 1000)
+				console.log("相差" + days + "天" + hours + "小时" + minutes + "分钟" + seconds + "秒")
+				$(".gxgDate").html("相差" + days + "天" + hours + "小时" + minutes + "分钟" + seconds + "秒")
+			}
+			//求时间差
+			timeDifference();
+			setInterval(function() {
+				timeDifference();
+			}, 1000)
+			
+			
+			
+			//3.获取时间
+//			var myDate = new Date();//获取系统当前时间
+			/*var myDate = new Date(156421456464);//获取系统当前时间
+			myDate.getTime(); //获取当前时间(从1970.1.1开始的毫秒数)
+			myDate.getYear(); //获取当前年份(2位)
+			myDate.getFullYear(); //获取完整的年份(4位,1970-????)
+			myDate.getMonth(); //获取当前月份(0-11,0代表1月)
+			myDate.getDate(); //获取当前日(1-31)
+			myDate.getDay(); //获取当前星期X(0-6,0代表星期天)
+			myDate.getHours(); //获取当前小时数(0-23)
+			myDate.getMinutes(); //获取当前分钟数(0-59)
+			myDate.getSeconds(); //获取当前秒数(0-59)
+			myDate.getMilliseconds(); //获取当前毫秒数(0-999)
+			myDate.toLocaleDateString(); //获取当前日期*/
+
+			//4.设置时间      参考路径http://www.w3school.com.cn/jsref/jsref_obj_date.asp
+			/*new Date("month dd,yyyy hh:mm:ss"); 
+			new Date("month dd,yyyy"); 
+			new Date(yyyy,mth,dd,hh,mm,ss);
+			new Date(yyyy,mth,dd); 
+			new Date(ms); //ms是毫秒数 */
+			
+				//设置年月日中的年  setFullYear() 方法用于设置年份。
+				/*dateObject.setFullYear(year,month,day)
+				year	必需。表示年份的四位整数。用本地时间表示。
+				month	可选。表示月份的数值，介于 0 ~ 11 之间。用本地时间表示。
+				day	可选。表示月中某一天的数值，介于 1 ~ 31 之间。用本地时间表示。*/
+					//根据当前时间设置
+					/*var date = new Date();
+					date.setFullYear(2020);
+					alert(date);*/
+					//根据时间戳设置
+					/*var date = new Date(15654465411);
+					date.setFullYear(2020);
+					alert(date);*/
+				//设置年月日中的月   setMonth() 方法用于设置月份。
+				/*dateObject.setMonth(month,day)
+				month	必需。一个表示月份的数值，该值介于 0（一月） ~ 11（十二月） 之间。
+				day	  可选。一个表示月的某一天的数值，该值介于 1 ~ 31 之间（以本地时间计）。在 EMCAScript 标准化之前，不支持该参数。*/
+					//根据当前时间设置
+					/*var date = new Date();
+					date.setMonth(8);  //九月(月份是从0开始)
+					alert(date);*/
+					//根据时间戳设置
+					/*var date = new Date(15654465411);
+					date.setMonth(8);  //九月(月份是从0开始)
+					alert(date);*/	
+				//设置年月日中的日   setDate() 方法用于设置一个月的某一天.
+				/*dateObject.setDate(day)
+				day	必需。表示一个月中的一天的一个数值（1 ~ 31）。*/
+					//根据当前时间设置
+					/*var date = new Date();
+					date.setDate(40);
+					alert(date);*/
+					//根据时间戳设置
+					/*var date = new Date(15654465411);
+					date.setDate(3);
+					alert(date)*/
 		</script>
 
 	</body>
